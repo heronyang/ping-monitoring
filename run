@@ -1,2 +1,2 @@
 #!/bin/bash
-while true; do ./logger; sleep 30; ./plot; done;
+while true; do ./logger; sleep 15; ./plot; done;
