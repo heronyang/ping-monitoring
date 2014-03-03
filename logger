@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DATE=$(date +%Y-%m-%d_%H-%M-%S)
+LOG_FILE="PING_api_plate_tw_$DATE.log"
+TOP_LOG_FILE="log"
+
+printf "%s\n" "$(ping -c 5 api.plate.tw)" >> $LOG_FILE
+
+echo -n $DATE >> $TOP_LOG_FILE
+cat $LOG_FILE | awk -F '[ /]' '/round-trip/{ print $7", "$8", "$9", "$10}' >> $TOP_LOG_FILE
+
+echo "file saved in $LOG_FILE" 
